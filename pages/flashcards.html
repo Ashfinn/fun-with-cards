@@ -1,52 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Flashcards - Fun with Cards</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <header>
-        <div class="logo">Fun with Cards</div>
-        <nav class="nav-menu">
-            <ul id="menu-list" class="menu">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="flashcards.html">Create Cards</a></li>
-                <li><a href="#">My Decks</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fun with Cards</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            /* Additional custom styling */
+            body {
+                font-family: 'Arial', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+        <!-- Main Container -->
+        <div class="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- Header Section -->
+            <div class="text-center py-4 px-6 bg-indigo-600 text-white">
+                <h1 class="text-2xl font-bold">Fun with Cards</h1>
+                <p class="text-sm">Interactive Flashcard App</p>
+            </div>
+
+            <!-- Card Display Section -->
+            <div id="flashcard" class="p-8 flex flex-col items-center justify-center bg-gray-50">
+                <h2 class="text-lg text-gray-700 mb-2">Question</h2>
+                <p class="text-gray-600 text-center">What is the capital of France?</p>
+                <button onclick="flipCard()" class="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-md">Show Answer</button>
+            </div>
+
+            <!-- Answer Section (Hidden by Default) -->
+            <div id="answer" class="p-8 flex flex-col items-center justify-center bg-gray-50 hidden">
+                <h2 class="text-lg text-gray-700 mb-2">Answer</h2>
+                <p class="text-gray-600 text-center">Paris</p>
+                <button onclick="flipCard()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Back to Question</button>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="p-4 text-center bg-gray-200">
+                <p class="text-sm text-gray-600">Designed by Fun with Cards Team</p>
+            </div>
         </div>
-        <div class="theme-toggle">
-            <button id="toggle-theme">Toggle Dark Mode</button>
-        </div>
-    </header>
 
-    <section class="flashcard-creation">
-        <h1>Create Your Flashcard</h1>
-        <form id="flashcard-form">
-            <label for="question">Question:</label>
-            <textarea id="question" rows="4"></textarea>
-            <label for="answer">Answer:</label>
-            <textarea id="answer" rows="4"></textarea>
-            <button type="button" onclick="addFlashcard()">Add Flashcard</button>
-        </form>
+        <!-- JavaScript for Interactivity -->
+        <script>
+            function flipCard() {
+                const flashcard = document.getElementById("flashcard");
+                const answer = document.getElementById("answer");
+                flashcard.classList.toggle("hidden");
+                answer.classList.toggle("hidden");
+            }
+        </script>
 
-        <div class="preview">
-            <h2>Your Flashcards</h2>
-            <div id="flashcard-preview-container" class="flashcard-container"></div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Fun with Cards</p>
-    </footer>
-
-    <script src="../js/app.js"></script>
-</body>
-</html>
+    </body>
+    </html>

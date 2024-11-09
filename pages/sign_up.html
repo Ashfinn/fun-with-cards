@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg animate-fadeIn">
+        <h2 class="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+        <form>
+            <input type="text" placeholder="Username" required class="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+            <input type="email" placeholder="Email" required class="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+            <input type="password" placeholder="Password" required class="w-full p-2 mb-6 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+            <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300">Sign Up</button>
+        </form>
+    </div>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</body>
+</html>

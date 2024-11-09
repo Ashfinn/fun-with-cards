@@ -3,43 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun with Cards</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>FlashMaster</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-background {
+            background-image: url('img/bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(249, 250, 251, 0.5) 0%, /* Adjusted opacity */
+                rgba(249, 250, 251, 0.6) 100% /* Adjusted opacity */
+            );
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="logo">Fun with Cards</div>
-        <nav class="nav-menu">
-            <ul id="menu-list" class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/pages/flashcards.html">Create Cards</a></li>
-                <li><a href="#">My Decks</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+<body class="min-h-screen bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-sm z-50 opacity-0" id="nav">
+        <div class="text-xl font-semibold">Fun With Cards</div>
+        <div class="relative"></div>
+            <div class="flex items-center gap-4 cursor-pointer" id="menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="hover:text-blue-600 transition-colors">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="hover:text-blue-600 transition-colors">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+            <div class="relative right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 hidden" id="submenu">
+                <a href="pages/login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Login</a>
+                <a href="pages/sign_up.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sign Up</a>
+                <a href="pages/flashcards.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Flashcards</a>
+            </div>
         </div>
-        <div class="theme-toggle">
-            <button id="toggle-theme">Toggle Dark Mode</button>
-        </div>
-    </header>
+    </nav>
 
-    <section class="hero">
-        <h1>Make Learning Fun with Custom Flashcards!</h1>
-        <p>Create flashcards and master new topics in an interactive and fun way.</p>
-        <div class="cta-buttons">
-            <a href="/pages/flashcards.html" class="btn primary">Create Cards</a>
-            <a href="#" class="btn secondary">Log In</a>
-        </div>
+    <!-- Hero Section with Background -->
+    <section class="hero-background min-h-screen relative">
+        <div class="hero-overlay absolute inset-0"></div>
+        <main class="pt-32 px-6 relative">
+            <div class="max-w-4xl mx-auto opacity-0" id="hero">
+                <h1 class="text-6xl font-bold tracking-tight mb-6">
+                    FUN<br/>
+                    WITH-CARDS
+                </h1>
+                
+                <p class="text-gray-600 max-w-lg text-lg mb-12">
+                    Design simple, practice often. Learn with minimal distractions 
+                    using our streamlined flashcard system.
+                </p>
+
+                <button class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    Start Learning
+                </button>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="fixed top-40 right-20 w-32 h-32 bg-blue-100 rounded-full opacity-75" id="circle1"></div>
+            <div class="fixed top-60 right-40 w-20 h-20 bg-gray-200 rounded-full opacity-75" id="circle2"></div>
+        </main>
+
     </section>
-
-    <footer>
-        <p>&copy; 2024 Fun with Cards | Inspired by Sheldon Cooper's Fun with Flags</p>
+    <!-- Footer -->
+    <footer class="fixed bottom-0 w-full p-6 text-sm text-gray-500 opacity-0" id="footer">
+        <div class="flex justify-between max-w-4xl mx-auto">
+            <span>© 2024 FlashMaster</span>
+            <span>01/45</span>
+        </div>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script>
+        // Initial animations
+        gsap.to("#nav", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        gsap.to("#hero", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power2.out"
+        });
+
+        gsap.to("#circle1", {
+            opacity: 0.5,
+            duration: 1,
+            delay: 0.6,
+            ease: "power2.out"
+        });
+
+        gsap.to("#circle2", {
+            opacity: 0.3,
+            duration: 1,
+            delay: 0.8,
+            ease: "power2.out"
+        });
+
+        gsap.to("#footer", {
+            opacity: 1,
+            duration: 1,
+            delay: 1,
+            ease: "power2.out"
+        });
+
+        // Scroll animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelector('#circle1').style.transform = `translateY(${scrolled * 0.2}px)`;
+            document.querySelector('#circle2').style.transform = `translateY(${scrolled * -0.1}px)`;
+        });
+
+        // Hover animations for buttons and interactive elements
+        const button = document.querySelector('button');
+        button.addEventListener('mouseenter', () => {
+            gsap.to(button, {
+                scale: 1.05,
+                duration: 0.3
+            });
+        });
+        button.addEventListener('mouseleave', () => {
+            gsap.to(button, {
+                scale: 1,
+                duration: 0.3
+            });
+        });
+
+        // Toggle submenu
+        const menuToggle = document.getElementById('menu-toggle');
+        const submenu = document.getElementById('submenu');
+        menuToggle.addEventListener('click', () => {
+            submenu.classList.toggle('hidden');
+        });
+
+        // Close submenu when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !submenu.contains(e.target)) {
+                submenu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
